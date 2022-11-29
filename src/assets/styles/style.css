@@ -1,35 +1,42 @@
 /*Обнуление*/
 * {
-	box-sizing: border-box;
-	margin: 0;
-	padding: 0;
-	
-  }
-  
-  a {
-	text-decoration: none;
-  }
-  
-  body {
-font-family: 'Roboto', sans-serif;
-  }
-  
-  ul {
-	list-style: none;
-  }
-  button {
-	padding: 0;
-	border: none;
-	font: inherit;
-	color: inherit;
-	background-color: transparent;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 
-	cursor: pointer;
-  }
-  .container {
+}
 
-	margin: 0px auto;
-  }
+a {
+    text-decoration: none;
+}
 
+body {
+    font-family: 'Roboto', sans-serif;
+}
 
+ul {
+    list-style: none;
+}
+
+button {
+    padding: 0;
+    border: none;
+    font: inherit;
+    color: inherit;
+    background-color: transparent;
+
+    cursor: pointer;
+}
+
+.container {
+
+    margin: 0px auto;
+}
+
+/*TODO: Добавить миксины и юзать их
+
+   https://github.com/ValentinAlekhin/nikadmitrieva-new/blob/master/client/components/MasonryGrid/index.vue
+   https://github.com/ValentinAlekhin/nikadmitrieva-new/blob/master/client/assets/scss/mixins.scss
+
+   */
 

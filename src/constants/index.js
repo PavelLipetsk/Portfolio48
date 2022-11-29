@@ -1,0 +1,1 @@
+export const socials = [{ class: 'instagram', to: '' }, { class: 'facebook', to: '' }, { class: 'github', to: '' }]
