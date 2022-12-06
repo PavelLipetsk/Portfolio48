@@ -7,7 +7,7 @@
     <div class="social">
  
       <router-link v-for="link of links" :key="link.class" class="social-icon" :class=[link.class] :to="link.to">
-        <i :class="`fab fa-${link.class}`"></i>
+        <i :class="` i fab fa-${link.class}`"></i>
       </router-link>
 
     </div>
@@ -64,7 +64,7 @@ hr {
   position: relative;
   overflow: hidden;
 
-  i {
+  .i {
     font-size: 12px;
     color: #67798e;
     transition: all 0.3s ease;
@@ -85,7 +85,7 @@ hr {
     transform: translateY(-4px);
     box-shadow: 0px 0px 15px #00000080;
 
-    i {
+    .i {
       color: #fff;
     }
 

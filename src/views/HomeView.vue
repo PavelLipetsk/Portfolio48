@@ -17,7 +17,7 @@
 
 <script>
 import MyInput from "@/components/ui/MyInput.vue";
-import '@/assets/styles/style.scss'
+import "@/assets/styles/style.scss";
 import MyButton from "@/components/ui/MyButton.vue";
 import { filterInputs } from "@/constants";
 export default {
@@ -46,27 +46,32 @@ export default {
     position: relative;
     display: grid;
     gap: 2px;
-    grid-template: 100% / 247px 150px 150px 247px 10%;
+    grid-template: repeat(3, 60px) / 40% 40%;
     justify-content: center;
-  //   @include lg {
-  //     grid-template: repeat(3, 60px) / 40% 40%;
-  //     gap: 2px;
+    @include lg {
+      grid-template: 100% / 247px 150px 150px 247px 10%;
+      gap: 2px;
+    }
+  }
+}
+
+@media (max-width: 1200px) {
+}
+@media (max-width: 992px) {
+  // .filter {
+  //   grid-template: repeat(3, 60px)/ 40% 40%;
+  //   gap: 2px;
+  //   .search {
+  //     grid-column: span 2;
   //   }
   // }
-
-//   @media (max-width: 1200px) {
-//   }
-//   @media (max-width: 992px) {
-
-//   }
-//   @media (max-width: 767px) {
-//   }
-//   @media (max-width: 576px) {
-//     .promo {
-//       font-size: 18px;
-//       margin-top: 150px;
-//     }
-//   }
 }
+@media (max-width: 767px) {
+}
+@media (max-width: 576px) {
+  .promo {
+    font-size: 18px;
+    margin-top: 150px;
+  }
 }
 </style>
