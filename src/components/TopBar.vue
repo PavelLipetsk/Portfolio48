@@ -1,41 +1,62 @@
 <template>
   <header class="header">
     <div class="logo">
-      <!--        TODO: router-link-->
-      <a href="/">
+     
+      <router-link to="/">
         <img
-            src="https://bureau.ru/soviet/130568/files/logo.svg"
-            width="60"
-            height="60px"
+          src="https://bureau.ru/soviet/130568/files/logo.svg"
+          width="60"
+          height="60"
         />
-      </a>
+      </router-link>
     </div>
-    <nav class="menu">
-      <ul>
-        <!--        TODO: Доделать и в константу вынести ссылки-->
-        <li>
-          <router-link to="/products">О нас</router-link>
+    <nav class="header-nav">
+      <ul class="header-ul">
+        <li v-for="link of links" :key="link.title" class="header-li">
+          <router-link class="menu-link" :to="link.to">{{ link.title }}</router-link>
         </li>
-        <li><a href="/services">Услуги</a></li>
-        <li><span class="active">Блог</span></li>
-        <li><a href="/contacts">Контакты</a></li>
       </ul>
     </nav>
-    <button class="btn">Войти</button>
-    <div class="tel">
-      <a href="tel:88004000500">8 903 699 9999</a>
-    </div>
-    <div class="burger">
-      <span></span>
-    </div>
 
+    <my-button class="btn">Войти</my-button>
+    <div class="tel">
+      <router-link class="tel-link" to="">8 903 699 9999</router-link>
+    </div>
+    <nav class="burger">
+      <transition name="fade" mode="out-in">
+        <i
+          class="material-icons show"
+          v-if="!show"
+          @click="show = !show"
+          key="menu"
+        >
+          menu</i
+        >
+        <i class="material-icons clear" v-else @click="show = !show" key="clear"
+          >clear</i
+        >
+      </transition>
+      <transition name="fade">
+        <ul v-if="show">
+          <li v-for="item in items" :key="item">{{ item }}</li>
+        </ul>
+      </transition>
+    </nav>
   </header>
 </template>
 
 <script>
+import { menuLinks } from "@/constants";
+import MyButton from "@/components/ui/MyButton.vue"
 export default {
-  name: 'SutTopbar',
-}
+  name: "SutTopbar",
+  data: () => ({
+    links: menuLinks,
+  }),
+   components: {
+    MyButton
+  },
+};
 </script>
 
 <style lang="scss" scoped>
@@ -51,11 +72,11 @@ export default {
     padding-left: 8px;
   }
 
-  .menu {
+  .header-nav {
     flex-grow: 1;
 
-    // TODO: Добавить классы
-    ul {
+  
+    .header-ul {
       display: flex;
       flex-flow: row nowrap;
       margin: 2px 0 0;
@@ -65,7 +86,7 @@ export default {
       list-style: none;
     }
 
-    li {
+    .header-li {
       margin-right: 20px;
 
       &:last-child {
@@ -73,7 +94,7 @@ export default {
       }
     }
 
-    a {
+    .menu-link {
       display: block;
       padding: 8px 10px;
       text-transform: uppercase;
@@ -95,6 +116,7 @@ export default {
         opacity: 0.9;
       }
     }
+
   }
 
   .tel {
@@ -102,7 +124,7 @@ export default {
     line-height: 12px;
     margin-right: 15px;
 
-    a {
+    .tel-link {
       color: #000;
       text-decoration: none;
     }
@@ -117,8 +139,11 @@ export default {
     line-height: 1.5;
     font-style: 1px;
     font-size: 15px;
-
   }
+      .material-icons {
+      color: #ff3d00;
+      font-size: 40px;
+    }
 }
 
 @media (max-width: 992px) {
@@ -143,47 +168,12 @@ export default {
     .header {
       justify-content: space-between;
 
-      .menu {
+      .header-nav {
         display: none;
       }
 
       .logo {
         margin-right: 0px;
-      }
-
-      .burger {
-        display: block;
-        position: relative;
-        width: 30px;
-        height: 20px;
-        margin-right: 10px;
-
-        span {
-          position: absolute;
-          background-color: #ff3d00;
-          left: 0;
-          width: 100%;
-          height: 2px;
-          top: 9px;
-        }
-
-        &:before,
-        &:after {
-          content: '';
-          background-color: #ff3d00;
-          position: absolute;
-          width: 100%;
-          height: 2px;
-          left: 0;
-        }
-
-        &:after {
-          top: 0;
-        }
-
-        &:before {
-          bottom: 0;
-        }
       }
 
       .btn {

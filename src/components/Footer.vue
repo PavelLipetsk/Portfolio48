@@ -5,10 +5,11 @@
       Apartments48
     </div>
     <div class="social">
-      <!--      TODO: Доделать-->
-      <router-link v-for="link of links" :key="link.class" class="social__icon" :class=[link.class] :to="link.to">
+ 
+      <router-link v-for="link of links" :key="link.class" class="social-icon" :class=[link.class] :to="link.to">
         <i :class="`fab fa-${link.class}`"></i>
       </router-link>
+
     </div>
     <div class="adress">Липецк. Шерстобитова 10</div>
   </div>
@@ -48,7 +49,7 @@ hr {
   justify-content: center;
 }
 
-.social__icon {
+.social-icon {
   text-decoration: none;
   display: flex;
   align-items: center;
@@ -106,7 +107,7 @@ hr {
   }
 }
 
-.git {
+.github {
   &:after {
     background-color: #333;
   }

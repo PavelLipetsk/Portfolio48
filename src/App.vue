@@ -7,7 +7,8 @@
 </template>
 
 <script>
-import '@/assets/styles/style.css'
+import '@/assets/styles/style.scss'
+// import '@/assets/styles/mixins.scss'
 import Topbar from '@/components/TopBar.vue'
 import SutFooter from '@/components/Footer.vue'
 export default {
