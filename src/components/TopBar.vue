@@ -1,7 +1,6 @@
 <template>
   <header class="header">
     <div class="logo">
-     
       <router-link to="/">
         <img
           src="https://bureau.ru/soviet/130568/files/logo.svg"
@@ -13,14 +12,16 @@
     <nav class="header-nav">
       <ul class="header-ul">
         <li v-for="link of links" :key="link.title" class="header-li">
-          <router-link class="menu-link" :to="link.to">{{ link.title }}</router-link>
+          <router-link class="menu-link" :to="link.to">{{
+            link.title
+          }}</router-link>
         </li>
       </ul>
     </nav>
 
-    <my-button class="btn">Войти</my-button>
+    <my-button class="btn" text="Войти" />
     <div class="tel">
-      <router-link class="tel-link" to="">8 903 699 9999</router-link>
+      <a class="tel-link" href="tel:89036999999">8 903 699 9999</a>
     </div>
     <nav class="burger">
       <transition name="fade" mode="out-in">
@@ -30,11 +31,16 @@
           @click="show = !show"
           key="menu"
         >
-          menu</i
+          menu
+        </i>
+        <i
+          class="material-icons clear"
+          v-else
+          @click="show = !show"
+          key="clear"
         >
-        <i class="material-icons clear" v-else @click="show = !show" key="clear"
-          >clear</i
-        >
+          clear
+        </i>
       </transition>
       <transition name="fade">
         <ul v-if="show">
@@ -46,17 +52,17 @@
 </template>
 
 <script>
-import { menuLinks } from "@/constants";
-import MyButton from "@/components/ui/MyButton.vue"
+import { menuLinks } from '@/constants'
+import MyButton from '@/components/ui/MyButton.vue'
 export default {
-  name: "SutTopbar",
+  name: 'SutTopbar',
   data: () => ({
     links: menuLinks,
   }),
-   components: {
-    MyButton
+  components: {
+    MyButton,
   },
-};
+}
 </script>
 
 <style lang="scss" scoped>
@@ -75,7 +81,6 @@ export default {
   .header-nav {
     flex-grow: 1;
 
-  
     .header-ul {
       display: flex;
       flex-flow: row nowrap;
@@ -116,7 +121,6 @@ export default {
         opacity: 0.9;
       }
     }
-
   }
 
   .tel {
@@ -140,10 +144,10 @@ export default {
     font-style: 1px;
     font-size: 15px;
   }
-      .material-icons {
-      color: #ff3d00;
-      font-size: 40px;
-    }
+  .material-icons {
+    color: #ff3d00;
+    font-size: 40px;
+  }
 }
 
 @media (max-width: 992px) {

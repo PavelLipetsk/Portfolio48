@@ -1,9 +1,9 @@
 <template>
-<div id="#app">
-  <topbar />
-  <router-view />
-  <sut-footer />
-</div>
+  <div id="#app">
+    <topbar />
+    <router-view />
+    <sut-footer />
+  </div>
 </template>
 
 <script>
@@ -15,16 +15,15 @@ export default {
   name: 'SutApp',
   components: {
     Topbar,
-    SutFooter
-  }
+    SutFooter,
+  },
 }
 </script>
 
 <style>
-#app{
+#app {
   min-height: 100%;
   display: flex;
   flex-direction: column;
 }
-
 </style>

@@ -1,8 +1,16 @@
 <template>
-  <input class="Input" :class="{ error }" :value="value" :placeholder="placeholder" @input="$emit('input', $event)"/>
+  <input
+    class="Input"
+    :class="{ error }"
+    :value="value"
+    :placeholder="placeholder"
+    @input="$emit('input', $event)"
+  />
 </template>
 
 <script>
+// TODO: Переименовать просто в input
+
 export default {
   props: {
     value: {
@@ -15,8 +23,8 @@ export default {
     },
     error: {
       boolean: true,
-    }
-  }
+    },
+  },
 }
 </script>
 

@@ -1,6 +1,8 @@
 <template>
   <div class="container">
     <div class="promo">Найти квартиру в аренду на короткий срок в Липецке</div>
+
+    <!-- TOOD: Вынести в отдельный копонент /home/filter.vue -->
     <div class="filter">
       <my-input
         v-for="input of inputs"
@@ -16,12 +18,13 @@
 </template>
 
 <script>
-import MyInput from "@/components/ui/MyInput.vue";
-import "@/assets/styles/style.scss";
-import MyButton from "@/components/ui/MyButton.vue";
-import { filterInputs } from "@/constants";
+import MyInput from '@/components/ui/MyInput.vue'
+import '@/assets/styles/style.scss'
+import MyButton from '@/components/ui/MyButton.vue'
+import { filterInputs } from '@/constants'
+
 export default {
-  name: "HomeView",
+  name: 'HomeView',
   data: () => ({
     inputs: filterInputs,
   }),
@@ -29,7 +32,7 @@ export default {
     MyInput,
     MyButton,
   },
-};
+}
 </script>
 <style lang="scss" scoped>
 .container {

@@ -1,20 +1,21 @@
 <template>
-  <hr>
+  <hr />
   <div class="container">
-    <div class="label">
-      Apartments48
-    </div>
+    <div class="label">Apartments48</div>
     <div class="social">
- 
-      <router-link v-for="link of links" :key="link.class" class="social-icon" :class=[link.class] :to="link.to">
+      <router-link
+        v-for="link of links"
+        :key="link.class"
+        class="social-icon"
+        :class="[link.class]"
+        :to="link.to"
+      >
         <i :class="` i fab fa-${link.class}`"></i>
       </router-link>
-
     </div>
     <div class="adress">Липецк. Шерстобитова 10</div>
   </div>
 </template>
-
 
 <script>
 import { socials } from '@/constants'
@@ -22,23 +23,20 @@ import { socials } from '@/constants'
 export default {
   name: 'SutFooter',
   data: () => ({
-    links: socials
-  })
+    links: socials,
+  }),
 }
 </script>
 
 <style lang="scss" scoped>
-
+// TODO: Погулить как прижат футер к низу страницы и сделать
 
 hr {
   margin-top: 300px;
-
 }
-
 
 .container {
   display: flex;
-
 }
 
 .social {
@@ -72,7 +70,7 @@ hr {
   }
 
   &:after {
-    content: "";
+    content: '';
     width: 20px;
     height: 20px;
     position: absolute;
@@ -97,7 +95,7 @@ hr {
 
 .instagram {
   &:after {
-    background-color: #833AB4;
+    background-color: #833ab4;
   }
 }
 
@@ -123,7 +121,6 @@ hr {
   &:after {
     background-color: #0e76a8;
   }
-
 }
 
 @media (max-width: 576px) {
@@ -132,5 +129,4 @@ hr {
     display: none;
   }
 }
-
 </style>
