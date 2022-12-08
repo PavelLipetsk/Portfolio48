@@ -1,6 +1,6 @@
-// TODO: Пределать вид написания типа SOME_CONST
 
-export const socials = [
+
+export const SOCIALS = [
   { class: 'instagram', to: '' },
   { class: 'facebook', to: '' },
   { class: 'github', to: '' },
@@ -8,14 +8,14 @@ export const socials = [
   { class: 'linkedin', to: '' },
 ]
 
-export const menuLinks = [
+export const MENU_LINKS = [
   { title: 'О Нас', to: '/products' },
   { title: 'Услуги', to: '/services' },
   { title: 'Блог', to: '/blog' },
   { title: 'Контакты', to: '/contacts' },
 ]
 
-export const filterInputs = [
+export const FILTER_INPUTS = [
   { placeholder: 'Выберите район', class: 'region' },
   { placeholder: 'Дата заезда', class: 'data-in' },
   { placeholder: 'Дата выезда', class: 'data-out' },

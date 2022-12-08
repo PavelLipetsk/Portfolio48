@@ -9,7 +9,6 @@
 </template>
 
 <script>
-// TODO: Переименовать просто в input
 
 export default {
   props: {

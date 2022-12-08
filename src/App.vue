@@ -1,8 +1,8 @@
 <template>
-  <div id="#app">
+  <div id="app">
     <topbar />
     <router-view />
-    <sut-footer />
+    <Footer />
   </div>
 </template>
 
@@ -10,20 +10,29 @@
 import '@/assets/styles/style.scss'
 
 import Topbar from '@/components/TopBar.vue'
-import SutFooter from '@/components/Footer.vue'
+import Footer from '@/components/Footer.vue'
 export default {
   name: 'SutApp',
   components: {
     Topbar,
-    SutFooter,
+    Footer,
   },
 }
 </script>
 
 <style>
 #app {
+  position: relative;
   min-height: 100%;
-  display: flex;
-  flex-direction: column;
+}
+
+#Footer{
+
+	position:absolute;
+	bottom:0;
+	background-color:red;
+	height:100px;
+	width:100px;
+
 }
 </style>

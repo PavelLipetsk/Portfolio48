@@ -5,7 +5,7 @@
 </template>
 
 <script>
-// TODO: Юзать пропсы, передать в других местах
+
 
 export default {
   props: {

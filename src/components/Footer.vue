@@ -1,6 +1,7 @@
 <template>
-  <hr />
+   
   <div class="container">
+   
     <div class="label">Apartments48</div>
     <div class="social">
       <router-link
@@ -18,12 +19,12 @@
 </template>
 
 <script>
-import { socials } from '@/constants'
+import { SOCIALS } from '@/constants'
 
 export default {
   name: 'SutFooter',
   data: () => ({
-    links: socials,
+    links: SOCIALS,
   }),
 }
 </script>
@@ -31,9 +32,7 @@ export default {
 <style lang="scss" scoped>
 // TODO: Погулить как прижат футер к низу страницы и сделать
 
-hr {
-  margin-top: 300px;
-}
+
 
 .container {
   display: flex;
@@ -123,7 +122,7 @@ hr {
   }
 }
 
-@media (max-width: 576px) {
+@include sm {
   .label,
   .adress {
     display: none;

@@ -19,7 +19,7 @@
       </ul>
     </nav>
 
-    <my-button class="btn" text="Войти" />
+    <Button class="btn" text="Войти" />
     <div class="tel">
       <a class="tel-link" href="tel:89036999999">8 903 699 9999</a>
     </div>
@@ -52,15 +52,15 @@
 </template>
 
 <script>
-import { menuLinks } from '@/constants'
-import MyButton from '@/components/ui/MyButton.vue'
+import { MENU_LINKS } from '@/constants'
+import Button from '@/components/ui/Button.vue'
 export default {
   name: 'SutTopbar',
   data: () => ({
-    links: menuLinks,
+    links: MENU_LINKS,
   }),
   components: {
-    MyButton,
+    Button,
   },
 }
 </script>
@@ -71,7 +71,9 @@ export default {
   flex-flow: row nowrap;
   justify-content: flex-start;
   align-items: center;
-
+  .burger{
+    display: none;
+  }
   .logo {
     margin-right: 30px;
     padding-top: 8px;
@@ -150,10 +152,10 @@ export default {
   }
 }
 
-@media (max-width: 992px) {
+@include lg {
   .header {
     .btn {
-      margin-right: 10px;
+      margin-right: 5px;
     }
 
     .burger-menu {
@@ -161,14 +163,14 @@ export default {
     }
 
     .tel {
-      display: none;
+      margin-right: 10px;
     }
 
     .logo {
-      margin-right: 20px;
+      margin-right: 10px;
     }
   }
-  @media (max-width: 767px) {
+  @include md {
     .header {
       justify-content: space-between;
 
@@ -182,6 +184,12 @@ export default {
 
       .btn {
         margin-right: 0px;
+      }
+      .tel{
+        display: none;
+      }
+      .burger{
+        display: block;
       }
     }
 
