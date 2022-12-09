@@ -1,37 +1,39 @@
-
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 a {
-    text-decoration: none;
+  text-decoration: none;
+}
+
+html,
+body,
+#app {
+  height: 100%;
 }
 
 body {
-    height: 100%;
-    font-family: 'Roboto', sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 ul {
-    list-style: none;
+  list-style: none;
 }
 
 button {
-    padding: 0;
-    border: none;
-    font: inherit;
-    color: inherit;
-    background-color: transparent;
+  padding: 0;
+  border: none;
+  font: inherit;
+  color: inherit;
+  background-color: transparent;
 
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .container {
-
-    margin: 0px auto;
+  margin: 0px auto;
 }
 
 /*TODO: Добавить миксины и юзать их
@@ -40,4 +42,3 @@ button {
    https://github.com/ValentinAlekhin/nikadmitrieva-new/blob/master/client/assets/scss/mixins.scss
 
    */
-

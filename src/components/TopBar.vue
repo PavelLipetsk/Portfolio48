@@ -9,12 +9,18 @@
         />
       </router-link>
     </div>
+
     <nav class="header-nav">
       <ul class="header-ul">
         <li v-for="link of links" :key="link.title" class="header-li">
-          <router-link class="menu-link" :to="link.to">{{
-            link.title
-          }}</router-link>
+          <router-link
+            class="menu-link"
+            exact
+            exact-active-class="exact-active"
+            active-class="active"
+            :to="link.to"
+            >{{ link.title }}</router-link
+          >
         </li>
       </ul>
     </nav>
@@ -71,7 +77,7 @@ export default {
   flex-flow: row nowrap;
   justify-content: flex-start;
   align-items: center;
-  .burger{
+  .burger {
     display: none;
   }
   .logo {
@@ -152,6 +158,8 @@ export default {
   }
 }
 
+// TODO: Сделать рядом с каждым классом
+
 @include lg {
   .header {
     .btn {
@@ -185,10 +193,10 @@ export default {
       .btn {
         margin-right: 0px;
       }
-      .tel{
+      .tel {
         display: none;
       }
-      .burger{
+      .burger {
         display: block;
       }
     }
