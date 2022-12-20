@@ -1,15 +1,17 @@
 import { createStore } from 'vuex'
-
+import flat from '@/store/modules/flat'
 export default createStore({
   state:() => ({
-    lol: true
+    
   }),
   getters: {
   },
   mutations: {
+   
   },
   actions: {
   },
   modules: {
+    flat
   }
 })

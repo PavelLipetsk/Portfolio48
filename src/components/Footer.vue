@@ -30,12 +30,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-// TODO: Погулить как прижат футер к низу страницы и сделать
+
 
 
 
 .container {
   display: flex;
+  justify-content: space-between;
 }
 
 .social {

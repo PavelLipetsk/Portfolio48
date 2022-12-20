@@ -9,7 +9,7 @@
       :placeholder="input.placeholder"
     />
 
-    <Button text="Найти" class="btn" />
+    <Button text="Найти" class="btn" :to="{name : Store}" />
   </div>
 </template>
 

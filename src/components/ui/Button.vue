@@ -24,6 +24,10 @@ export default {
   border: 2px solid #ff3d00;
   background-color: white;
   line-height: 1.5;
-  font-style: 1px;
+  font-style: 2px;
+  @include md {
+  
 }
+}
+
 </style>

@@ -12,15 +12,15 @@
 
     <nav class="header-nav">
       <ul class="header-ul">
-        <li v-for="link of links" :key="link.title" class="header-li">
-          <router-link
-            class="menu-link"
-            exact
-            exact-active-class="exact-active"
-            active-class="active"
-            :to="link.to"
-            >{{ link.title }}</router-link
-          >
+        <li
+          v-for="link of links"
+          :key="link.title"
+          class="header-li"
+          active-class="active"
+        >
+          <router-link class="menu-link" :to="link.to">{{
+            link.title
+          }}</router-link>
         </li>
       </ul>
     </nav>
@@ -29,46 +29,43 @@
     <div class="tel">
       <a class="tel-link" href="tel:89036999999">8 903 699 9999</a>
     </div>
-    <nav class="burger">
+    <div class="wrapper">
       <transition name="fade" mode="out-in">
         <i
           class="material-icons show"
           v-if="!show"
           @click="show = !show"
           key="menu"
+          >menu</i
         >
-          menu
-        </i>
-        <i
-          class="material-icons clear"
-          v-else
-          @click="show = !show"
-          key="clear"
+        <i class="material-icons clear" v-else @click="show = !show" key="clear"
+          >clear</i
         >
-          clear
-        </i>
       </transition>
-      <transition name="fade">
-        <ul v-if="show">
-          <li v-for="item in items" :key="item">{{ item }}</li>
+      <div name="fade" mode="out-in">
+        <ul class="burger-ul" :class="{ open: show }">
+          <li class="burger-li" v-for="link in links" :key="link">
+            {{ link.title }}
+          </li>
         </ul>
-      </transition>
-    </nav>
+      </div>
+    </div>
   </header>
 </template>
 
 <script>
-import { MENU_LINKS } from '@/constants'
-import Button from '@/components/ui/Button.vue'
+import { MENU_LINKS } from "@/constants";
+import Button from "@/components/ui/Button.vue";
 export default {
-  name: 'SutTopbar',
+  name: "SutTopbar",
   data: () => ({
     links: MENU_LINKS,
+    show: false,
   }),
   components: {
     Button,
   },
-}
+};
 </script>
 
 <style lang="scss" scoped>
@@ -77,18 +74,76 @@ export default {
   flex-flow: row nowrap;
   justify-content: flex-start;
   align-items: center;
-  .burger {
+  background-color: #fff;
+  box-shadow: 0 0 10px 5px rgba(221, 221, 221, 1);
+  @include md {
+    justify-content: space-between;
+  }
+  .wrapper {
     display: none;
+    @include md {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      .burger-ul {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: #fff;
+        transition: all 1s;
+        transform: translateX(100%);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        z-index: 2;
+        &.open {
+          transform: translateX(0);
+        }
+
+        .burger-li {
+          color: #000;
+          cursor: pointer;
+          display: flex;
+          font-size: 1.3em;
+          height: 3em;
+          justify-content: center;
+          list-style-type: none;
+          text-transform: uppercase;
+          transition: all 0.3s ease;
+          &:hover{
+            color:#e4e3e3
+          }
+        }
+
+      }
+    }
+
+    .show,
+    .clear {
+      cursor: pointer;
+
+      font-size: 2.5em;
+      z-index: 3;
+    }
   }
   .logo {
     margin-right: 30px;
     padding-top: 8px;
     padding-left: 8px;
+    @include lg {
+      margin-right: 10px;
+    }
   }
 
   .header-nav {
     flex-grow: 1;
-
+    @include md {
+      display: none;
+    }
     .header-ul {
       display: flex;
       flex-flow: row nowrap;
@@ -135,7 +190,12 @@ export default {
     font-size: 15px;
     line-height: 12px;
     margin-right: 15px;
-
+    @include lg {
+      margin-right: 10px;
+    }
+    @include md {
+      display: none;
+    }
     .tel-link {
       color: #000;
       text-decoration: none;
@@ -143,6 +203,7 @@ export default {
   }
 
   .btn {
+    align-self: center;
     margin-right: 40px;
     padding: 6px 25px;
     border-radius: 5px;
@@ -151,6 +212,12 @@ export default {
     line-height: 1.5;
     font-style: 1px;
     font-size: 15px;
+    @include lg {
+      margin-right: 5px;
+    }
+    @include md {
+      margin-right: 0px;
+    }
   }
   .material-icons {
     color: #ff3d00;
@@ -158,65 +225,14 @@ export default {
   }
 }
 
-// TODO: Сделать рядом с каждым классом
-
-@include lg {
-  .header {
-    .btn {
-      margin-right: 5px;
-    }
-
-    .burger-menu {
-      display: none;
-    }
-
-    .tel {
-      margin-right: 10px;
-    }
-
-    .logo {
-      margin-right: 10px;
-    }
-  }
-  @include md {
-    .header {
-      justify-content: space-between;
-
-      .header-nav {
-        display: none;
-      }
-
-      .logo {
-        margin-right: 0px;
-      }
-
-      .btn {
-        margin-right: 0px;
-      }
-      .tel {
-        display: none;
-      }
-      .burger {
-        display: block;
-      }
-    }
-
-    .menu {
-      display: block;
-      position: fixed;
-      top: 0;
-      right: 0;
-      height: 100%;
-      width: 100%;
-      background-color: #ff3d00;
-      z-index: 3;
-    }
-    ul {
-      display: block !important;
-    }
-  }
-}
-
-@media (max-width: 576px) {
+.menu {
+  display: block;
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #ff3d00;
+  z-index: 3;
 }
 </style>
