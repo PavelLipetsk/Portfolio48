@@ -14,8 +14,9 @@
       <div class="filter">
         <div class="promo">Выбирайте лучшее</div>
         <div>
-          <input type="checkbox" id="favourite" name="favourite" checked />
-          <label for="favourite">Избранное</label>
+          <input type="checkbox" id="favo" value="Джек" 
+          v-model="favoriteCheckbox">
+          <label for="favorite">Избранное</label>
         </div>
       </div>
     </div>
@@ -23,10 +24,7 @@
       <div class="card" v-for="flat of flats" :key="flat">
         <div class="carousel">
           <img :src="flat.img" alt="" width="120" />
-           <button class="material-icons-outlined" @click="isFavourite">favorite</button>
-<span class="material-icons-outlined">
-favorite
-</span>
+           <button :class="{active: flat.favorite}" class="favorite" @click="isFavorite(flat.id)"></button>
         </div>
         <div class="card-discr">{{ flat.rooms }}</div>
         <div class="card-price">{{ flat.cost }} ₽</div>
@@ -38,17 +36,22 @@ favorite
 
 <script>
 import { FLATS_LIST } from "@/constants";
+import { mapMutations, mapState } from 'vuex';
+
+
 export default {
   data: () => ({
     flats: FLATS_LIST,
+    favoriteCheckbox: false
   }),
-  
   methods: {
-    isFavourite( ) {
-      console.log('isFavourite')
-      this.$store.commit('flat/isFavourite')
-    }
-  }
+    ...mapMutations("flat", ["isFavorite"])
+  }, 
+  computed: {
+    ...mapState([
+      "flat"
+    ]  
+)}
 };
 </script>
 
@@ -116,16 +119,16 @@ export default {
   }
 
 }
-  .favourite{
+  .favorite{
     height: 10px;
     width: 10px;
     border: 1px solid red;
-    &:focus {
-  background-color: #333;
-  border-color: #333;
-  color: #eee;
+&.active{
+  background-color: green;
 }
-  }
+}
+
+ 
 .map {
   grid-area: map;
   height: 100%;

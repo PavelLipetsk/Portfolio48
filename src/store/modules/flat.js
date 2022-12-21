@@ -1,18 +1,25 @@
 import { FLATS_LIST } from "@/constants";
-const state = {
+const state = ()=>({
     data: FLATS_LIST,
     
-}
+})
 const mutations = {
-    addFavourite(state, ) {
-        state.data.FLATS_LIST.id = true;
+    isFavorite(state, payload) {
+
+       state.data = state.data.map((el) => {
+        if (el.id === payload) {
+            el.favorite = !el.favorite
+        }
+        return el;
+       })
       },
 
 }
 export default {
+    namespaced: true,
     state,
     // actions,
     mutations,
     // getters
   }
-  console.log(FLATS_LIST);
+ 

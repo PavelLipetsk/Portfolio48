@@ -2,9 +2,7 @@
   <div class="main">
     <div class="promo">Найти квартиру в аренду на короткий срок в Липецке</div>
     <Filter />
-    <span class="material-icons-outlined">
-favorite
-</span>
+<i class="fa-solid fa-heart"></i>
   </div>
 </template>
 
