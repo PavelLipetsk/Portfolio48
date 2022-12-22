@@ -8,6 +8,7 @@ const routes = [
     component: HomeView
   },
   {
+    // TODO: Переименовать роут
     path: '/store',
     name: 'Store',
     component: Store

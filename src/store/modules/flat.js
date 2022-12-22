@@ -1,25 +1,25 @@
 import { FLATS_LIST } from "@/constants";
-const state = ()=>({
-    data: FLATS_LIST,
-    
-})
+
+const state = () => ({
+  data: FLATS_LIST,
+});
+
 const mutations = {
-    isFavorite(state, payload) {
+  // TODO: Преминовать в toggleFavourite
+  isFavorite(state, payload) {
+    state.data = state.data.map((el) => {
+      if (el.id === payload) {
+        el.favorite = !el.favorite;
+      }
+      return el;
+    });
+  },
+};
 
-       state.data = state.data.map((el) => {
-        if (el.id === payload) {
-            el.favorite = !el.favorite
-        }
-        return el;
-       })
-      },
-
-}
 export default {
-    namespaced: true,
-    state,
-    // actions,
-    mutations,
-    // getters
-  }
- 
+  namespaced: true,
+  state,
+  // actions,
+  mutations,
+  // getters
+};

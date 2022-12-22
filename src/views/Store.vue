@@ -10,6 +10,7 @@
         >
       </div>
     </div>
+<!--    TODO: Вынести фильтер в отдельный компонет-->
     <div class="filter-wrapper">
       <div class="filter">
         <div class="promo">Выбирайте лучшее</div>
@@ -25,6 +26,7 @@
         </div>
         <label for="room-amount">Выберите количество комнат</label>
         <select v-model="selectedRooms" class="room-amount" name="room-amount">
+<!--          TODO: Сделать опции массивом, юзать v-for -->
           <option disabled value="">Выберите один из вариантов</option>
           <option>Любое</option>
           <option>Студия</option>
@@ -46,6 +48,7 @@
         </div>
       </div>
     </div>
+    <!--    TODO: Вынести элемент квартиры в отдельный компонет-->
     <div class="cards-wrapper">
       <div class="card" v-for="flat of filterFlats" :key="flat">
         <div class="carousel">
@@ -68,8 +71,11 @@
 import { FLATS_LIST } from "@/constants";
 import { mapMutations, mapState } from "vuex";
 
+// TODO: Переименовать нормально текущий компонет
+
 export default {
   data: () => ({
+    // TODO: Убрать константу отсюда
     flats: FLATS_LIST,
     favoriteCheckbox: false,
     selectedRooms: "",
@@ -79,6 +85,7 @@ export default {
   },
   computed: {
       filterFlats() {
+        // TODO: Отрефакторить. Последовательно проверять наличие фильров, если фильр есть, то фильровать если нет, то пох
         if (this.favoriteCheckbox && this.selectedRooms != "") {
           let matched = [];
           let fav = this.data.filter((el) => el.favorite);
