@@ -14,17 +14,47 @@
       <div class="filter">
         <div class="promo">Выбирайте лучшее</div>
         <div>
-          <input type="checkbox" id="favo" value="Джек" 
-          v-model="favoriteCheckbox">
+          <input
+            class="favorite"
+            type="checkbox"
+            id="favo"
+            value="Джек"
+            v-model="favoriteCheckbox"
+          />
           <label for="favorite">Избранное</label>
+        </div>
+        <label for="room-amount">Выберите количество комнат</label>
+        <select v-model="selectedRooms" class="room-amount" name="room-amount">
+          <option disabled value="">Выберите один из вариантов</option>
+          <option>Любое</option>
+          <option>Студия</option>
+          <option>1-комнатная квартира</option>
+          <option>2-комнатная квартира</option>
+        </select>
+        <div class="cost-wrapper">
+          <input
+            class=""
+            type="range"
+            id="volume"
+            name="volume"
+            min="0"
+            max="4000"
+          />
+
+          <button @click="filterFlats" class="btn">Применить</button>
+          <button class="btn">Сбросить все фильтры</button>
         </div>
       </div>
     </div>
     <div class="cards-wrapper">
-      <div class="card" v-for="flat of flats" :key="flat">
+      <div class="card" v-for="flat of filterFlats" :key="flat">
         <div class="carousel">
           <img :src="flat.img" alt="" width="120" />
-           <button :class="{active: flat.favorite}" class="favorite" @click="isFavorite(flat.id)"></button>
+          <button
+            :class="{ active: flat.favorite }"
+            class="favorite"
+            @click="isFavorite(flat.id)"
+          ></button>
         </div>
         <div class="card-discr">{{ flat.rooms }}</div>
         <div class="card-price">{{ flat.cost }} ₽</div>
@@ -36,22 +66,37 @@
 
 <script>
 import { FLATS_LIST } from "@/constants";
-import { mapMutations, mapState } from 'vuex';
-
+import { mapMutations, mapState } from "vuex";
 
 export default {
   data: () => ({
     flats: FLATS_LIST,
-    favoriteCheckbox: false
+    favoriteCheckbox: false,
+    selectedRooms: "",
   }),
   methods: {
-    ...mapMutations("flat", ["isFavorite"])
-  }, 
+    ...mapMutations("flat", ["isFavorite"]),
+  },
   computed: {
-    ...mapState([
-      "flat"
-    ]  
-)}
+      filterFlats() {
+        if (this.favoriteCheckbox && this.selectedRooms != "") {
+          let matched = [];
+          let fav = this.data.filter((el) => el.favorite);
+          let rooms = this.data.filter((el) => el.rooms === this.selectedRooms);
+          matched = fav.filter( el => rooms.indexOf( el ) > -1 );
+           return matched
+          }
+          if (this.selectedRooms != "") {
+            return this.data.filter((el) => el.rooms === this.selectedRooms);
+          }
+     
+         else {
+          return this.data
+        }
+        
+      },
+    ...mapState("flat", ["data"]  )
+  },
 };
 </script>
 
@@ -83,16 +128,38 @@ export default {
   position: sticky;
   top: 0;
   .filter {
+    display: flex;
+
+    flex-direction: column;
     padding: 10%;
-    margin-top: 15px;
+
+    margin-bottom: 20px;
     border: 2px solid red;
     height: 100%;
     overflow-y: scroll;
     height: 100vh;
+    .promo {
+      margin-bottom: 20px;
+    }
+    .favorite {
+      margin-bottom: 20px;
+      margin-right: 5px;
+    }
+    .room-amount {
+      font-size: 14px;
+      line-height: 14px;
 
-    // @include lg {
-    //   display: none;
-    // }
+      border-radius: 3px;
+      border: 2px solid #fc0606;
+    }
+    .btn {
+      // padding: 60px 200px;
+      border-radius: 4px;
+      border: 2px solid #ff3d00;
+      background-color: white;
+      line-height: 1.5;
+      font-style: 2px;
+    }
   }
 }
 
@@ -117,18 +184,16 @@ export default {
     box-shadow: 0 0 10px 5px rgba(221, 221, 221, 1);
     transition: box-shadow 0.1s;
   }
+}
+.favorite {
+  height: 10px;
+  width: 10px;
+  border: 1px solid red;
+  &.active {
+    background-color: green;
+  }
+}
 
-}
-  .favorite{
-    height: 10px;
-    width: 10px;
-    border: 1px solid red;
-&.active{
-  background-color: green;
-}
-}
-
- 
 .map {
   grid-area: map;
   height: 100%;
