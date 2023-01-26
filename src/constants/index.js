@@ -123,10 +123,10 @@ export const FLATS_LIST = [
     img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLCm0AQ00u6QpBqImwXRPdrwWpyoAVwAp0W9ZB4yn4EYLwvZX4fKhGtRoKdrZ6vpjuKVY&usqp=CAU",
     favorite: false,
   },
-];
-
-// TODO: Юзать спред оператор, возращать сразу объект, юзать сразу на константе
-FLATS_LIST.map((el, i) => {
+].map((el, i) => {
   el.id = i;
   return el;
 });
+
+// TODO: Юзать спред оператор, возращать сразу объект, юзать сразу на константе
+

@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-import Store from '../views/Store.vue'
+import CardList from '../views/CardList.vue'
 const routes = [
   {
     path: '/',
@@ -9,9 +9,9 @@ const routes = [
   },
   {
     // TODO: Переименовать роут
-    path: '/store',
-    name: 'Store',
-    component: Store
+    path: '/cardlist',
+    name: 'CardList',
+    component: CardList
   },
 
 ]

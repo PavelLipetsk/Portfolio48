@@ -6,7 +6,7 @@ const state = () => ({
 
 const mutations = {
   // TODO: Преминовать в toggleFavourite
-  isFavorite(state, payload) {
+  toggleFavourite(state, payload) {
     state.data = state.data.map((el) => {
       if (el.id === payload) {
         el.favorite = !el.favorite;
