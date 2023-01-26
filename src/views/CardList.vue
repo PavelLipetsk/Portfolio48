@@ -14,8 +14,8 @@
     <Filter/>
     <!--    TODO: Вынести элемент квартиры в отдельный компонет-->
     <div class="cards-wrapper">
-      <div class="card" v-for="flat of filterFlats" :key="flat">
-      <flat-card/>
+      <div class="card">
+        <flat-card  v-for="flat of data" :key="flat.id" :img="flat.img" />
       </div>
     </div>
     <div class="map"></div>

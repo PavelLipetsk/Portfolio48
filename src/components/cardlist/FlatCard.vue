@@ -1,6 +1,6 @@
 <template>
   <div class="carousel">
-    <img :src="flat.img" alt="" width="120" />
+    <img :src="img" alt="" width="120" />
     <button
       :class="{ active: flat.favorite }"
       class="favorite"
@@ -15,10 +15,13 @@
 
 export default {
   name: "Card",
-  data: () => ({
-
-
-  }),
+  props: {
+    img: {
+      type: String,
+      required: true
+    },
+  },
+  data: () => ({}),
 };
 </script>
 
